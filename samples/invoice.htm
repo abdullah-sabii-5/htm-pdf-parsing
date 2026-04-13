@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sample Invoice</title>
+  <style>
+    :root {
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --line: #d1d5db;
+      --brand: #0f766e;
+      --bg: #f8fafc;
+    }
+    @page {
+      size: A4;
+      margin: 20mm;
+    }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background: var(--bg);
+    }
+    .sheet {
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 24px;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    h1 {
+      margin: 0;
+      color: var(--brand);
+      letter-spacing: 0.03em;
+    }
+    .meta {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+    }
+    th {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .total {
+      margin-top: 14px;
+      text-align: right;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <section class="row">
+      <div>
+        <h1>Invoice #1007</h1>
+        <p class="meta">Issued: 2026-04-13</p>
+      </div>
+      <div>
+        <strong>Acme Exports Ltd.</strong><br />
+        Karachi, Pakistan
+      </div>
+    </section>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Qty</th>
+          <th>Rate</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Parsing engine implementation</td>
+          <td>2</td>
+          <td>$150.00</td>
+          <td>$300.00</td>
+        </tr>
+        <tr>
+          <td>HTML to PDF pipeline setup</td>
+          <td>1</td>
+          <td>$220.00</td>
+          <td>$220.00</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="total">Total: $520.00</p>
+  </main>
+</body>
+</html>

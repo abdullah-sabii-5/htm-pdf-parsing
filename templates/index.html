@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML to PDF Converter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-100 text-slate-900">
+  <main class="mx-auto flex min-h-screen max-w-3xl items-center px-4 py-10">
+    <section class="w-full rounded-2xl border border-slate-200 bg-white p-6 shadow-lg sm:p-8">
+      <h1 class="text-2xl font-bold tracking-tight">HTML/HTM to PDF</h1>
+      <p class="mt-2 text-sm text-slate-600">
+        Upload a local <code>.htm</code> or <code>.html</code> file and download the converted PDF.
+      </p>
+
+      {% if error %}
+      <div class="mt-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        {{ error }}
+      </div>
+      {% endif %}
+
+      <form class="mt-6 space-y-5" action="/convert" method="post" enctype="multipart/form-data">
+        <div>
+          <label for="file" class="mb-2 block text-sm font-medium">HTML file</label>
+          <input
+            id="file"
+            name="file"
+            type="file"
+            accept=".html,.htm,text/html"
+            required
+            class="block w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm file:mr-4 file:rounded-md file:border-0 file:bg-slate-800 file:px-3 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-slate-700"
+          />
+        </div>
+
+        <div>
+          <label for="engine" class="mb-2 block text-sm font-medium">Renderer</label>
+          <select
+            id="engine"
+            name="engine"
+            class="block w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm"
+          >
+            <option value="auto" selected>Auto (recommended)</option>
+            <option value="chromium">Chromium/Chrome</option>
+            <option value="weasyprint">WeasyPrint</option>
+            <option value="wkhtmltopdf">wkhtmltopdf</option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-700"
+        >
+          Convert and Download PDF
+        </button>
+      </form>
+
+      <p class="mt-5 text-xs text-slate-500">
+        Max upload size: 10 MB. No LLM is used in this pipeline.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
