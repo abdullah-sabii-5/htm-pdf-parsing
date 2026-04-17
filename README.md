@@ -58,9 +58,10 @@ Flow:
 2. Choose renderer (`auto` recommended).
 3. Click "Convert and Download PDF".
 
-For non-technical Windows QA setup, see:
+For non-technical QA setup, see:
 
-- `QA_WINDOWS_SETUP.md`
+- `QA_WINDOWS_SETUP.md` — Windows
+- `QA_LINUX_MAC_SETUP.md` — Linux & macOS
 
 ### URL input
 
@@ -88,11 +89,18 @@ Then rerun the command above.
 
 ```bash
 python3 -m venv .venv
-.venv/bin/pip install weasyprint
+.venv/bin/pip install -r requirements.txt
 python3 html2pdf.py --input samples/invoice.htm --output out/invoice.pdf --engine auto
 ```
 
 The script auto-detects `.venv/bin/weasyprint` if `weasyprint` is not in `PATH`.
+
+### One-command Web UI startup
+
+| Platform | Command |
+|----------|---------|
+| Windows | Double-click `start-ui-windows.bat` |
+| Linux / macOS | `chmod +x start-ui.sh && ./start-ui.sh` |
 
 ## Notes
 
